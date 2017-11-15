@@ -16,7 +16,7 @@ my_classifier = tree.DecisionTreeClassifier()
 # from sklearn import neural_network
 # my_classifier = neural_network.MLPClassifier()
 
-my_classifier = my_classifier.fit(X_train, y_train)
+my_classifier.fit(X_train, y_train)
 
 predictions = my_classifier.predict(X_test)
 
