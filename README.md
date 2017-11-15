@@ -17,10 +17,10 @@ Python: 3.6.X
 
 ### Install:
 
-install `numpy` `graphviz` `matplotlib` `scikit-learning` `tensorflow` via pip:
+install `scipy` `graphviz` `matplotlib` `scikit-learning` `tensorflow` via pip:
 
 ```bash
-pip3 install numpy graphviz matplotlib scikit-learning tensorflow
+pip3 install scipy graphviz matplotlib scikit-learning tensorflow
 ```
 
 clone into your folder:
