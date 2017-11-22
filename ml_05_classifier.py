@@ -1,7 +1,9 @@
 from scipy.spatial import distance
 
+
 def euc(a, b):
     return distance.euclidean(a, b)
+
 
 class ScrappyKNN():
     def fit(self, X_train, y_train):
@@ -13,7 +15,7 @@ class ScrappyKNN():
         for row in X_test:
             label = self.closest(row)
             predictions.append(label)
-        return(predictions)
+        return (predictions)
 
     def closest(self, row):
         best_dist = euc(row, self.X_train[0])
@@ -23,7 +25,8 @@ class ScrappyKNN():
             if dist < best_dist:
                 best_dist = dist
                 best_index = i
-        return(self.y_train[best_index])
+        return (self.y_train[best_index])
+
 
 from sklearn import datasets
 iris = datasets.load_iris()
