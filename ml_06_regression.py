@@ -1,6 +1,5 @@
 from sklearn import datasets
 from sklearn.cross_validation import train_test_split
-from sklearn.metrics import accuracy_score
 from sklearn.linear_model import LinearRegression
 
 boston_data = datasets.load_boston()
