@@ -1,5 +1,4 @@
 from sklearn import datasets
-from sklearn.cross_validation import train_test_split
 import matplotlib.pyplot as plt
 
 X, y = datasets.make_regression(
