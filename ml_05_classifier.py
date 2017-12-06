@@ -6,6 +6,7 @@ def euc(a, b):
 
 
 class ScrappyKNN():
+
     def fit(self, X_train, y_train):
         self.X_train = X_train
         self.y_train = y_train
