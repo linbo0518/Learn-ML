@@ -6,21 +6,20 @@
 **[scikit-learning]**:
 Machine Learning in Python
 
-**[tensorflow]**:
-An open-source software library for Machine Intelligence
+**[Machine Learning in Action]**:
+Peter Harrington
+
 
 ### Environment:
-
-OS: macOS 10.13.X
 
 Python: 3.6.X
 
 ### Install:
 
-install `scipy` `graphviz` `matplotlib` `scikit-learning` `tensorflow` via pip:
+install `numpy` `scipy` `graphviz` `matplotlib` `scikit-learning` via pip:
 
 ```bash
-pip3 install scipy graphviz matplotlib scikit-learning tensorflow
+pip3 install numpy scipy graphviz matplotlib scikit-learning
 ```
 
 clone into your folder:
@@ -32,7 +31,7 @@ git clone https://github.com/linbo0518/learn_ml.git
 ### Run:
 
 ```Python
-Python3 XXX.py
+Python3 filename.py
 ```
 
 
@@ -43,5 +42,5 @@ https://www.youtube.com/watch?v=cKxRvEZd3Mw&list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2r
 [scikit-learning]: 
 http://scikit-learn.org/
 
-[tensorflow]: 
-https://www.tensorflow.org/
+[Machine Learning in Action]:
+https://www.manning.com/books/machine-learning-in-action
