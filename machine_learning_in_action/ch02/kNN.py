@@ -66,7 +66,7 @@ def auto_normalization(dataset):
     max_value = dataset.max(0)
     value_range = max_value - min_value
     normalized_dataset = np.zeros(np.shape(dataset))
-    ndimension = dataset.shape(0)
+    ndimension = dataset.shape[0]
     normalized_dataset = dataset - np.tile(min_value, (ndimension, 1))
     normalized_dataset = normalized_dataset / np.tile(value_range,
                                                       (ndimension, 1))
