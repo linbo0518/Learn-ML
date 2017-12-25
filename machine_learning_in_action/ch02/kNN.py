@@ -62,6 +62,14 @@ def file2matrix(filename):
 
 
 def auto_normalization(dataset):
+    """make dataset normalization, range from 0 to 1
+
+    :param dataset: input dataset
+
+    :return normalized_dataset: normalized dataset
+    :return value_range: range of value
+    :return min_value: numerical minimum data
+    """
     min_value = dataset.min(0)
     max_value = dataset.max(0)
     value_range = max_value - min_value
