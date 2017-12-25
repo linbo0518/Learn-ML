@@ -59,3 +59,15 @@ def file2matrix(filename):
         label_vector.append(list_from_line[-1])
         index += 1
     return example_matrix, label_vector
+
+
+def auto_normalization(dataset):
+    min_value = dataset.min(0)
+    max_value = dataset.max(0)
+    value_range = max_value - min_value
+    normalized_dataset = np.zeros(shape(dataset))
+    ndimension = dataset.shape(0)
+    normalized_dataset = dataset - np.tile(min_value, (ndimension, 1))
+    normalized_dataset = normalized_dataset / np.tile(value_range,
+                                                      (ndimension, 1))
+    return normalized_dataset, value_range, min_value
