@@ -9,6 +9,15 @@ def create_dataset():
 
 
 def classifiy0(input_X, dataset, label, k):
+    """simplify kNN classifier
+
+    :param input_X: one data to be classified 
+    :param dataset: training dataset
+    :param label: training label
+    :param k: 
+
+    :return sorted_label_count[0][0]: the most popular label
+    """
     # Calculate the distance between the input_X and each example of the training set
     dataset_size = dataset.shape[0]
     minus_matrix = np.tile(input_X, (dataset_size, 1)) - dataset
