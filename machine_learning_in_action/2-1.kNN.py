@@ -34,3 +34,28 @@ def classifiy0(input_X, dataset, label, k):
     sorted_label_count = sorted(
         label_count.items(), key=operator.itemgetter(1), reverse=True)
     return sorted_label_count[0][0]
+
+
+def file2matrix(filename):
+    """split input file to example matrix and label vector
+
+    :param filename: input file
+
+    :return example_matrix: data matrix
+    :return label_vector: label vector
+    """
+    # Get file lines
+    file_obj = open(filename)
+    lines_list = file_obj.readlines()
+    file_obj.close()
+    number_of_lines = len(lines_list)
+    example_matrix = np.zeros((number_of_lines, 3))
+    label_vector = []
+    index = 0
+    for each_line in lines_list:
+        each_line = each_line.strip()
+        list_from_line = each_line.split('\t')
+        example_matrix[index, :] = list_from_line[0:3]
+        label_vector.append(list_from_line[-1])
+        index += 1
+    return example_matrix, label_vector
