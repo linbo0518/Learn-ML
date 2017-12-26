@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import operator
 
@@ -74,8 +75,61 @@ def auto_normalization(dataset):
     max_value = dataset.max(0)
     value_range = max_value - min_value
     normalized_dataset = np.zeros(np.shape(dataset))
-    ndimension = dataset.shape[0]
-    normalized_dataset = dataset - np.tile(min_value, (ndimension, 1))
+    ndimension_training = dataset.shape[0]
+    normalized_dataset = dataset - np.tile(min_value, (ndimension_training, 1))
     normalized_dataset = normalized_dataset / np.tile(value_range,
-                                                      (ndimension, 1))
+                                                      (ndimension_training, 1))
     return normalized_dataset, value_range, min_value
+
+
+def image2vector(filename):
+    """convert image to vector
+
+    :param filename: input image file, 32 * 32 pixels
+
+    :return image_vector: 1 * 1024 vector
+    """
+    image_vector = np.zeros((1, 1024))
+    file_obj = open(filename)
+    for i in range(32):
+        each_line = file_obj.readline()
+        for j in range(32):
+            image_vector[0, 32 * i + j] = int(each_line[j])
+    file_obj.close()
+    return image_vector
+
+
+def handwriting_classifiy():
+    """handwriting digits classifier
+    """
+    # get trainingDigits directory content
+    handwriting_label = []
+    training_file_list = os.listdir('trainingDigits')
+    ndimension_training = len(training_file_list)
+    training_matrix = np.zeros((ndimension_training, 1024))
+    # get label name from training file name
+    for i in range(ndimension_training):
+        file_name = training_file_list[i]
+        file_name_noext = file_name.split('.')[0]
+        label_name = int(file_name_noext.split('_')[0])
+        handwriting_label.append(label_name)
+        training_matrix[i, :] = image2vector('trainingDigits/%s' % file_name)
+    # get testDigits directory content
+    test_file_list = os.listdir('testDigits')
+    ndimension_test = len(test_file_list)
+    # get label name from test file name
+    error_count = 0.0
+    for i in range(ndimension_test):
+        file_name = test_file_list[i]
+        file_name_noext = file_name.split('.')[0]
+        label_name = int(file_name_noext.split('_')[0])
+        test_vector = image2vector('testDigits/%s' % file_name)
+
+        classifiy_result = classifiy0(test_vector, training_matrix,
+                                      handwriting_label, 3)
+        print('the classifier come back with: %d, the real number is %d' %
+              (classifiy_result, label_name))
+        if (classifiy_result != label_name):
+            error_count += 1.0
+    print('the total number of error is: %d' % error_count)
+    print('the total error rate is: %f' % (error_count / ndimension_test))
