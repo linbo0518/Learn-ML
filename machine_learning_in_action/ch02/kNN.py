@@ -129,7 +129,7 @@ def handwriting_classifiy():
                                       handwriting_label, 3)
         print('the classifier come back with: %d, the real number is %d' %
               (classifiy_result, label_name))
-        if (classifiy_result != label_name):
+        if classifiy_result != label_name:
             error_count += 1.0
     print('the total number of error is: %d' % error_count)
     print('the total error rate is: %f' % (error_count / ndimension_test))
