@@ -30,3 +30,13 @@ def calculate_shannon_entropy(dataset):
         prob = float(label_count[each_label]) / num_example
         shannon_entropy -= prob * log(prob, 2)
     return shannon_entropy
+
+
+def split_dataset(dataset, axis, value):
+    splited_dataset = []
+    for feature_vector in dataset:
+        if feature_vector[axis] == value:
+            reduced_dataset = feature_vector[:axis]
+            reduced_dataset.extend(feature_vector[axis+1:])
+            splited_dataset.append(reduced_dataset)
+    return splited_dataset
