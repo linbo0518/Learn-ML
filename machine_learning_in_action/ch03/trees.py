@@ -37,6 +37,32 @@ def split_dataset(dataset, axis, value):
     for feature_vector in dataset:
         if feature_vector[axis] == value:
             reduced_dataset = feature_vector[:axis]
-            reduced_dataset.extend(feature_vector[axis+1:])
+            reduced_dataset.extend(feature_vector[axis + 1:])
             splited_dataset.append(reduced_dataset)
     return splited_dataset
+
+
+def choose_best_feature_to_split(dataset):
+    """calculate each entropy of every feature, choose the best feature to split the dataset
+
+    :param dataset: dataset waiting to be splited
+
+    :return best_feature: best feature should be chosen to split the dataset
+    """
+    number_of_features = len(dataset[0]) - 1
+    base_entropy = calculate_shannon_entropy(dataset)
+    best_info_gain = 0.0
+    best_feature = -1
+    for i in range(number_of_features):
+        feature_list = [example[i] for example in dataset]
+        unique_value = set(feature_list)
+        current_entropy = 0.0
+        for each_value in unique_value:
+            splited_dataset = split_dataset(dataset, i, each_value)
+            prob = len(splited_dataset) / float(len(dataset))
+            current_entropy += prob * calculate_shannon_entropy(splited_dataset)
+        current_info_gain = base_entropy - current_entropy
+        if (current_info_gain > best_info_gain):
+            best_info_gain = current_info_gain
+            best_feature = i
+    return best_feature
