@@ -1,4 +1,5 @@
 from math import log
+import operator
 
 
 def create_dataset():
@@ -66,3 +67,14 @@ def choose_best_feature_to_split(dataset):
             best_info_gain = current_info_gain
             best_feature = i
     return best_feature
+
+
+def majority_count(class_list):
+    class_count = {}
+    for each_class in class_list:
+        if each_class not in class_count.keys():
+            class_count[each_class] = 0
+        class_count[each_class] += 1
+    sorted_class_count = sorted(
+        class_count.items(), key=operator.itemgetter(1), reverse=True)
+    return sorted_class_count[0][0]
