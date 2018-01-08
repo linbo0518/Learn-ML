@@ -10,8 +10,8 @@ def create_dataset():
     """
     dataset = [[1, 1, 'yes'], [1, 1, 'yes'], [1, 0, 'no'], [0, 1, 'no'],
                [0, 1, 'no']]
-    label = ['no surfacing', 'flippers']
-    return dataset, label
+    labels = ['no surfacing', 'flippers']
+    return dataset, labels
 
 
 def calculate_shannon_entropy(dataset):
@@ -78,3 +78,22 @@ def majority_count(class_list):
     sorted_class_count = sorted(
         class_count.items(), key=operator.itemgetter(1), reverse=True)
     return sorted_class_count[0][0]
+
+
+def create_tree(dataset, labels):
+    class_list = [example[-1] for example in dataset]
+    if class_list.count(class_list[0]) == len(class_list):
+        return class_list[0]
+    if len(dataset[0]) == 1:
+        return majority_count(class_list)
+    best_feature = choose_best_feature_to_split(dataset)
+    best_feature_label = labels[best_feature]
+    decision_tree = {best_feature_label: {}}
+    del (labels[best_feature])
+    feature_values = [example[best_feature] for example in dataset]
+    unique_value = set(feature_values)
+    for each_value in unique_value:
+        sub_labels = labels[:]
+        decision_tree[best_feature_label][each_value] = create_tree(
+            split_dataset(dataset, best_feature, each_value), sub_labels)
+    return decision_tree
