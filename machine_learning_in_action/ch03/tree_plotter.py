@@ -25,3 +25,29 @@ def create_plot():
     plot_node('a decision node', (0.5, 0.1), (0.1, 0.5), DECISION_NODE)
     plot_node('a leaf node', (0.8, 0.1), (0.3, 0.8), LEAF_NODE)
     plt.show()
+
+
+def get_leafs_num(decision_tree):
+    leafs_num = 0
+    first_str = list(decision_tree.keys())[0]
+    second_dict = decision_tree[first_str]
+    for each_key in list(second_dict.keys()):
+        if type(second_dict[each_key]).__name__ == 'dict':
+            leafs_num += get_leafs_num(second_dict[each_key])
+        else:
+            leafs_num += 1
+    return leafs_num
+
+
+def get_tree_depth(decision_tree):
+    max_depth = 0
+    first_str = list(decision_tree.keys())[0]
+    second_dict = decision_tree[first_str]
+    for each_key in list(second_dict.keys()):
+        if type(second_dict[each_key]).__name__ == 'dict':
+            this_depth = 1 + get_tree_depth(second_dict[each_key])
+        else:
+            this_depth = 1
+        if this_depth > max_depth:
+            max_depth = this_depth
+    return max_depth
