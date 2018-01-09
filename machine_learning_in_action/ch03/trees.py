@@ -63,7 +63,7 @@ def choose_best_feature_to_split(dataset):
             prob = len(splited_dataset) / float(len(dataset))
             current_entropy += prob * calculate_shannon_entropy(splited_dataset)
         current_info_gain = base_entropy - current_entropy
-        if (current_info_gain > best_info_gain):
+        if current_info_gain > best_info_gain:
             best_info_gain = current_info_gain
             best_feature = i
     return best_feature
@@ -89,7 +89,7 @@ def create_tree(dataset, labels):
     best_feature = choose_best_feature_to_split(dataset)
     best_feature_label = labels[best_feature]
     decision_tree = {best_feature_label: {}}
-    del (labels[best_feature])
+    del labels[best_feature]
     feature_values = [example[best_feature] for example in dataset]
     unique_value = set(feature_values)
     for each_value in unique_value:
