@@ -1,18 +1,24 @@
-## Machine Learning Recipes
+## Learn ML
 
-**YouTube Playlist**:
+**Coursera**:
+
+[Machine Learning]
+
+**YouTube**:
+
+[Machine Learning (Hung-yi Lee, NTU)]
+
 [Machine Learning Recipes with Josh Gordon]
 
-**[scikit-learning]**:
-Machine Learning in Python
+**Book**:
 
-**[Machine Learning in Action]**:
-Peter Harrington
+[Machine Learning in Action]
 
 
 ### Environment:
 
 Python: 3.6.X
+
 
 ### Install:
 
@@ -24,23 +30,26 @@ pip3 install numpy scipy graphviz matplotlib scikit-learning
 
 clone into your folder:
 
-```git
+```bash
 git clone https://github.com/linbo0518/learn_ml.git
 ```
 
+
 ### Run:
 
-```Python
-Python3 filename.py
+```bash
+python3 filename.py
 ```
 
 
+[Machine Learning]:
+https://www.coursera.org/learn/machine-learning
+
+[Machine Learning (Hung-yi Lee, NTU)]:
+https://www.youtube.com/watch?v=CXgbekl66jc&list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49
 
 [Machine Learning Recipes with Josh Gordon]: 
 https://www.youtube.com/watch?v=cKxRvEZd3Mw&list=PLOU2XLYxmsIIuiBfYad6rFYQU_jL2ryal
-
-[scikit-learning]: 
-http://scikit-learn.org/
 
 [Machine Learning in Action]:
 https://www.manning.com/books/machine-learning-in-action
