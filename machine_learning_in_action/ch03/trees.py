@@ -23,7 +23,7 @@ def calculate_shannon_entropy(dataset):
     label_count = {}
     for feature_vector in dataset:
         current_label = feature_vector[-1]
-        if current_label not in label_count.keys():
+        if current_label not in list(label_count.keys()):
             label_count[current_label] = 0
         label_count[current_label] += 1
     shannon_entropy = 0.0
@@ -72,7 +72,7 @@ def choose_best_feature_to_split(dataset):
 def majority_count(class_list):
     class_count = {}
     for each_class in class_list:
-        if each_class not in class_count.keys():
+        if each_class not in list(class_count.keys()):
             class_count[each_class] = 0
         class_count[each_class] += 1
     sorted_class_count = sorted(
